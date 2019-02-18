@@ -9,10 +9,14 @@ public class Principal {
 		
 		Beca becas[]=new Beca[MAXBECAS];
 		int numBecas=0;
-		
+		String tipo,origen;
 		int menu;
+		int becasfps=0;
+		int becasfp=0;
+		int media;
+		double renta;
 		
-		// Se añaden tantas solicitudes como desee el usuario
+		
 		
 		
 		do{
@@ -25,12 +29,25 @@ public class Principal {
 				
 				if(encontrado == -1){
 					System.out.println("Renta percápita del solicitante: ");
-					double renta=sc.nextDouble();
+					 renta=sc.nextDouble();
 					sc.nextLine();
+					do {
+					System.out.println("anote el tipo de beca que desea solicitar fp/l");
+					tipo=sc.nextLine();
+					}while(tipo=="fp" || tipo=="l");
+					if (tipo.equalsIgnoreCase("fp")){
+					System.out.println("anota la ciudad de origen");
+					origen=sc.nextLine();
+						becas[numBecas]=new Fp(dni, renta,origen);
+						numBecas++;
+		}
+					if (tipo.equalsIgnoreCase("l")) {
+						System.out.println("anota la nota media");
+						media=sc.nextInt();
+						becas[numBecas]=new Libros(dni,renta,media);
+						numBecas++;
+					}
 					
-									
-					becas[numBecas]=new Beca(dni, renta);
-					numBecas++;
 						
 				}
 				else
@@ -40,7 +57,7 @@ public class Principal {
 					break;
 				System.out.println("Añadir otra solicitud:1. Si\n2. No");
 				menu=sc.nextInt();
-			
+				sc.nextLine();
 		}while(menu==1);
 		
 		System.out.println("Damos puntuación a las becas*************");
@@ -65,12 +82,29 @@ public class Principal {
 				}
 				
 			}
+		/*
+		for(int i=0;i<becasfps;i++)
+		if (becas[i] instanceof Fp) {
+			becasfp=(Fp)becas[i].getPuntuacion();
+				if (becasfp==0)
+					System.out.println(becas[i].toString());
+					becas[i]=null
+				for (int k=i;k<numfp-1;k++){ 	
+	                becas[k]=becas[k+1]; 
+	                becasfps--;
+	                numBecas--; 
+				}
+		}
+		*/
 		
-		/* Mostramos las puntuaciones de todas las becas */
+		
 		for(int cont=0; cont < numBecas; cont++)
 			System.out.println(becas[cont]);
-						
-	}
+		System.out.println("mostramos toda la informacion completa de todas las becas");{
+		for(int i=0;i<numBecas;i++) {
+			System.out.println(becas[i].toString());
+		}
+	}}
 
 	
 	public static int buscarDni(String dni, Beca becas[],int tam){
