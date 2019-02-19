@@ -2,12 +2,12 @@ package controlherencia;
 import java.util.*;
 
 public class Principal {
-    static final int MAXBECAS=20;
+    
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
 		
-		Beca becas[]=new Beca[MAXBECAS];
+		Vector <Beca> becas=new Beca();
 		int numBecas=0;
 		String tipo,origen;
 		int menu;
@@ -34,7 +34,7 @@ public class Principal {
 					do {
 					System.out.println("anote el tipo de beca que desea solicitar fp/l");
 					tipo=sc.nextLine();
-					}while(tipo=="fp" || tipo=="l");
+					}while(tipo.equalsIgnoreCase("fp") || tipo.equalsIgnoreCase("l"));
 					if (tipo.equalsIgnoreCase("fp")){
 					System.out.println("anota la ciudad de origen");
 					origen=sc.nextLine();
@@ -82,7 +82,7 @@ public class Principal {
 				}
 				
 			}
-		/*
+		
 		for(int i=0;i<becasfps;i++)
 		if (becas[i] instanceof Fp) {
 			becasfp=(Fp)becas[i].getPuntuacion();
@@ -95,7 +95,7 @@ public class Principal {
 	                numBecas--; 
 				}
 		}
-		*/
+		
 		
 		
 		for(int cont=0; cont < numBecas; cont++)
