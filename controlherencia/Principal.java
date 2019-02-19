@@ -106,7 +106,7 @@ public class Principal {
 		}
 	}}
 
-	
+	System.out.println("esto esta para que de conflicto");
 	public static int buscarDni(String dni, Beca becas[],int tam){
 		
 		for(int cont=0; cont < tam;cont++)
